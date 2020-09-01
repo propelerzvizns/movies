@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link rel="stylesheet" type="text/css" href="{{URL::asset('css/app.css')}}">
         <!-- Styles -->
         <style>
             html, body {
@@ -64,12 +64,15 @@
         </style>
     </head>
     <body>
+        <div class="container">
             <div class="links">
                     <a href="/movies">Movies</a>
                     <a href="/movies/create">Add movie</a>
         
             </div>
-        @yield('content')
+            @yield('content')
+        </div>
+
 
     </body>
     </html>

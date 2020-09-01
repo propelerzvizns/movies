@@ -7,5 +7,6 @@
     {{$movie->director}}<br>
     {{$movie->story_line}}<br>
     {{$movie->year}}<br>
+    <a href="/movies">go back</a>
 
 @endsection
