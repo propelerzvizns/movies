@@ -1,0 +1,29 @@
+[33mcommit aab5d8722854023ae673b089eb7e5d1d469e9be9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: ivanamilovac <antesevicivana@gmail.com>
+Date:   Tue Sep 1 22:00:31 2020 +0200
+
+    created add movie view, added create(add) movie route, created form in view
+
+[33mcommit b9f7e2ac0f37e518f838ad594f4d5f92248f7bde[m
+Author: ivanamilovac <antesevicivana@gmail.com>
+Date:   Tue Sep 1 21:42:03 2020 +0200
+
+    imported bootstrap, crated layout file and navigation
+
+[33mcommit 7f549336c2d49cc4a86a81cd3f9b34176a104cb8[m
+Author: ivanamilovac <antesevicivana@gmail.com>
+Date:   Tue Sep 1 21:24:00 2020 +0200
+
+    created MoviesCOntroller,created routes for all and sigle movies/movie,  created view for all movies and i listed them, created page for sigle movie and listed it
+
+[33mcommit f885f53844867c6b0b82e53af874b94638739086[m
+Author: ivanamilovac <antesevicivana@gmail.com>
+Date:   Tue Sep 1 21:06:00 2020 +0200
+
+    created movies table, and manualy persisted data to movies table
+
+[33mcommit c65e986e43e2d0ccb0b631dd3b7ce6bfba22a4e0[m
+Author: ivanamilovac <antesevicivana@gmail.com>
+Date:   Tue Sep 1 20:48:35 2020 +0200
+
+    initial commit
