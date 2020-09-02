@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Movie;
 use App\Comment;
+use Illuminate\Http\Request;
 
-class MoviesController extends Controller
+
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-        return view('movies.all', compact('movies'));
+        //
     }
 
     /**
@@ -27,7 +26,6 @@ class MoviesController extends Controller
     public function create()
     {
         //
-        return view('movies.create');
     }
 
     /**
@@ -36,23 +34,21 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
-        // return $request;
-
-        $data = $request->validate
-        (
+        $data =$request->validate(
             [
-            'title' => 'required',
-            'genre' => 'required',
-            'director' => 'string|required',
-            'story_line' => 'max:1000',
-            'year' => 'integer|min:1900|max:2020'
+                'content' => 'required|string'
             ]
         );
-        Movie::create($data);
-        return redirect('/movies');
+        // return $request;
+        Comment::create(
+            [
+                'content' => $request->content,
+                'movie_id' => $id
+            ]
+        );
+        return redirect('/movies/'.$id);
     }
 
     /**
@@ -64,11 +60,6 @@ class MoviesController extends Controller
     public function show($id)
     {
         //
-        $movie = Movie::findOrFail($id);
-        // $comments = Comment::where('movie_id' , $id);
-        $comments = $movie->comments;
-        // dd($comments);
-        return view('movies.single', compact('movie', 'id', 'comments'));
     }
 
     /**
