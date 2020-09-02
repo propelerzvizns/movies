@@ -16,7 +16,6 @@ class MoviesController extends Controller
     public function index()
     {
         $lMovies = Movie::orderBy('id', 'desc')->take(5)->get();
-        // return $lMovies;
         $movies = Movie::all();
         return view('movies.all', compact('movies', 'lMovies'));
     }
@@ -41,8 +40,6 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         //
-        // return $request;
-
         $data = $request->validate
         (
             [
@@ -67,43 +64,9 @@ class MoviesController extends Controller
     {
         //
         $movie = Movie::findOrFail($id);
-        // $comments = Comment::where('movie_id' , $id);
         $comments = $movie->comments;
-        // dd($comments);
         return view('movies.single', compact('movie', 'id', 'comments'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
