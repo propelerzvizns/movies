@@ -34,21 +34,23 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
+        // return $request;
         $data =$request->validate(
             [
-                'content' => 'required|string'
+                'content' => 'required|string',
+                'movie_id' => 'required'
             ]
         );
         // return $request;
         Comment::create(
             [
                 'content' => $request->content,
-                'movie_id' => $id
+                'movie_id' => $request->movie_id
             ]
         );
-        return redirect('/movies/'.$id);
+        return redirect('/movies/'.$request->movie_id);
     }
 
     /**

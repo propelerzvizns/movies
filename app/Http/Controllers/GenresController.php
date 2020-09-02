@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Movie;
-use App\Comment;
+use Illuminate\Http\Request;
 
-class MoviesController extends Controller
+class GenresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $lMovies = Movie::orderBy('id', 'desc')->take(5)->get();
-        // return $lMovies;
-        $movies = Movie::all();
-        return view('movies.all', compact('movies', 'lMovies'));
+        //
     }
 
     /**
@@ -29,7 +25,6 @@ class MoviesController extends Controller
     public function create()
     {
         //
-        return view('movies.create');
     }
 
     /**
@@ -41,20 +36,6 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         //
-        // return $request;
-
-        $data = $request->validate
-        (
-            [
-            'title' => 'required',
-            'genre' => 'required',
-            'director' => 'string|required',
-            'story_line' => 'max:1000',
-            'year' => 'integer|min:1900|max:2020'
-            ]
-        );
-        Movie::create($data);
-        return redirect('/movies');
     }
 
     /**
@@ -63,14 +44,13 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($genre)
     {
         //
-        $movie = Movie::findOrFail($id);
-        // $comments = Comment::where('movie_id' , $id);
-        $comments = $movie->comments;
-        // dd($comments);
-        return view('movies.single', compact('movie', 'id', 'comments'));
+        $lMovies = Movie::orderBy('id', 'desc')->take(5)->get();
+        $movies = Movie::where('genre', $genre)->get();
+        // return $movies;
+        return view('movies.all', compact('movies', 'lMovies'));
     }
 
     /**

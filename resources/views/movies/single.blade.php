@@ -1,26 +1,30 @@
 @extends('layouts.app')
 @section('title', 'movies')
 @section('content')
-    <a href="/movies">go back</a>
-    {{$movie->title}}<br>
-    {{$movie->genre}}<br>
-    {{$movie->director}}<br>
-    {{$movie->year}}<br>
-    {{$movie->story_line}}<br><hr>
+
+
+    <div class="alert alert-primary">
+        <p>Name of the movie: {{$movie->title}}</a></p>
+        <p>Genre: <a href="/genres/{{$movie->genre}}">{{$movie->genre}}</a></p>
+        <p>Director: {{$movie->director}}</p>
+        <p>Story line: {{$movie->story_line}}</p>
+        <p>Year: {{$movie->year}}</p>
+
 
     @foreach($comments as $comment)
-        <div class="alert alert-primary ">
+        <div class="alert alert-secondary ">
             <h4>{{$comment->content}}</h3>
             <p>created at: {{$comment->created_at}}</p></div>
 
     @endforeach
-    <br>
+    </div>
 
 
 
-    <form method="POST" action="/comments/{{$id}}">
+    <form method="POST" action="/comments/add">
     @csrf
     <div class="form-group">
+            <input type="hidden" name="movie_id" class="form-control" id="content" value="{{$id}}">
             <label for="content">content</label>
             <input type="text" name="content" class="form-control" id="content" aria-describedby="contentHelp">
             @error('content')
