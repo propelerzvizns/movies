@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Comment;
 
 class MoviesController extends Controller
 {
@@ -62,7 +63,10 @@ class MoviesController extends Controller
     {
         //
         $movie = Movie::findOrFail($id);
-        return view('movies.single', compact('movie', 'id'));
+        // $comments = Comment::where('movie_id' , $id);
+        $comments = $movie->comments;
+        // dd($comments);
+        return view('movies.single', compact('movie', 'id', 'comments'));
     }
 
     /**

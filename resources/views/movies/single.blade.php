@@ -5,8 +5,13 @@
     {{$movie->title}}<br>
     {{$movie->genre}}<br>
     {{$movie->director}}<br>
-    {{$movie->story_line}}<br>
     {{$movie->year}}<br>
+    {{$movie->story_line}}<br><hr>
+
+    @foreach($comments as $comment)
+        {{$comment->content}}
+    @endforeach
+    <br>
     <a href="/movies">go back</a>
 
 @endsection
